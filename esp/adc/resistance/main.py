@@ -1,5 +1,5 @@
 ###
-# Blink for led on and off.
+# Read adc value example.
 #
 # License - MIT.
 ###
