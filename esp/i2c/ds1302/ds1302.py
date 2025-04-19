@@ -1,7 +1,19 @@
-from machine import Pin
+###
+# DS1302 rtc i2c example.
+#
+# License - MIT.
+###
+
+# DS1302是一个外置时钟，使用i2c通信.
+# CLK - GPIO7.
+# SDA - GPIO6.
+# CS  - GPIO15.
 import time
+from machine import Pin
+
 
 class DS1302:
+# {
     def __init__(self, clk, dio, cs):
         self.clk = clk
         self.dio = dio
@@ -98,23 +110,25 @@ class DS1302:
             return self._hex2dec(self._get_reg(0x8A + 1)) % 8
         else:
             self._wr(0x8A, self._dec2hex(weekday % 8))
+# }
 
-# 初始化DS1302对象
-ds1302 = DS1302(clk=Pin(7), dio=Pin(6), cs=Pin(15))
 
-# 设置时间（年，月，日，时，分，秒，星期）
-ds1302.year(2025)    # 年（23表示2023年）
-ds1302.month(3)    # 月
-ds1302.day(1)      # 日
-ds1302.hour(10)     # 时（24小时制）
-ds1302.minute(0)    # 分
-ds1302.second(0)    # 秒
-ds1302.weekday(3)   # 星期（1-7，3表示星期三）
+# 初始化DS1302对象.
+ds1302 = DS1302(clk = Pin(7), dio = Pin(6), cs = Pin(15))
 
-# 启动DS1302
+# 设置时间 (年，月，日，时，分，秒，星期).
+ds1302.year(2025)   # 年 (23表示2023年).
+ds1302.month(3)     # 月.
+ds1302.day(1)       # 日.
+ds1302.hour(10)     # 时 (24小时制).
+ds1302.minute(0)    # 分.
+ds1302.second(0)    # 秒.
+ds1302.weekday(3)   # 星期 (1-7，3表示星期三).
+
+# 启动DS1302.
 ds1302.start()
 
-# 主循环
+# 主循环.
 while True:
     year = ds1302.year()
     mon  = ds1302.month()
