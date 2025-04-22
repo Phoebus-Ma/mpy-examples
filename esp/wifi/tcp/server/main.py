@@ -1,4 +1,10 @@
+###
+# TCP IP Server example.
+#
+# License - MIT.
+###
 
+# TCP IP Server.
 import socket
 
 # 创建TCP套接字
