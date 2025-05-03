@@ -5,8 +5,8 @@
 ###
 
 '''
-SCL - GPIO6.
-SDA - GPIO5.
+SCL - GPIO7.
+SDA - GPIO6.
 AD0 - GND.
 
 AD0低电平, i2c地址是0x68.
@@ -52,7 +52,7 @@ class MPU6050:
         return value - 65536 if value > 32767 else value
 
 # 初始化I2C (确保引脚正确).
-i2c = I2C(0, scl=Pin(6), sda=Pin(5), freq=400000)
+i2c = I2C(0, scl=Pin(7), sda=Pin(6), freq=400000)
 mpu = MPU6050(i2c)
 
 while True:

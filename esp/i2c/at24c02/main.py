@@ -53,8 +53,8 @@ class AT24C02:
         return self.i2c.readfrom_mem(self.addr, mem_addr, length)
 # }
 
-# 初始化I2C (ESP32默认引脚：SDA=21, SCL=22).
-i2c = I2C(0, scl=Pin(22), sda=Pin(21), freq=400000)
+# 初始化I2C (ESP32默认引脚：SDA=6, SCL=7).
+i2c = I2C(0, scl=Pin(7), sda=Pin(6), freq=400000)
 
 # 扫描I2C设备 (验证连接).
 devices = i2c.scan()
